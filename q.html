@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .typewriter {
+      display: inline-block;
+    }
+
+    .constant {
+      font-weight: bold;
+    }
+
+    .typing {
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 0.15em solid #000;
+      animation: typing 2s steps(20, end), blink-caret 0.5s step-end infinite;
+    }
+
+    .red-text {
+      color: red;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: auto;
+      }
+    }
+
+    @keyframes blink-caret {
+      from, to {
+        border-color: transparent;
+      }
+      50% {
+        border-color: black;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="typewriter">
+    <span class="constant">save your</span>
+    <span class="typing">SYS <span></span></span>
+  </h1>
+
+  <script>
+    const typingElement = document.querySelector('.typing');
+
+    const messages = ['abc d', 'life', 'wife'];
+    let currentMessageIndex = 0;
+    let currentCharacterIndex = 0;
+
+    function typeMessage() {
+      const message = messages[currentMessageIndex];
+      typingElement.lastElementChild.textContent = message.slice(0, currentCharacterIndex);
+      currentCharacterIndex++;
+
+      if (currentCharacterIndex > message.length) {
+        currentCharacterIndex = 0;
+        currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+        if (currentMessageIndex > 0) {
+          typingElement.classList.add('red-text');
+        } else {
+          typingElement.classList.remove('red-text');
+        }
+      }
+    }
+
+    setInterval(typeMessage, 100); // Adjust the typing speed (in milliseconds) as desired
+  </script>
+</body>
+</html>

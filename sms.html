@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SMS Alert</title>
+</head>
+<body>
+  <form id="sms-form">
+    <label for="mobile-number">Mobile Number:</label>
+    <input type="text" id="mobile-number" placeholder="Enter mobile number" required><br>
+    <label for="message">Message:</label>
+    <textarea id="message" placeholder="Enter your message" required></textarea><br>
+    <button type="submit">Send</button>
+  </form>
+
+  <script >document.getElementById('sms-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+  
+    var mobileNumber = document.getElementById('mobile-number').value;
+    var message = document.getElementById('message').value;
+  
+    // Make an AJAX request to your server-side script
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/send-sms', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+  
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          alert('SMS sent successfully!');
+        } else {
+          alert('Error sending SMS. Please try again later.');
+        }
+      }
+    };
+  
+    var payload = {
+      mobileNumber: mobileNumber,
+      message: message
+    };
+  
+    xhr.send(JSON.stringify(payload));
+  });
+  
+  
+  
+  
+  </script>
+</body>
+</html>

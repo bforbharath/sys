@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather Forecast</title>
+  <style>
+    
+    .weather-section {
+      
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 20px;
+      background-color: lightblue;
+    }
+    .alert {
+      color: red;
+      font-weight: bold;
+    }
+    .emoji {
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+ 
+
+  <div class="weather-section">
+    <h2>Current Day Weather Forecast</h2>
+    <div id="current-day-forecast"></div>
+    <h2>Future 7-Day Weather Forecast</h2>
+    <div id="weekly-forecast"></div>
+    <h2>Major Weather Changes</h2>
+    <div id="weather-changes"></div>
+  </div>
+
+  <script >
+    const currentDayForecastContainer = document.getElementById('current-day-forecast');
+const weeklyForecastContainer = document.getElementById('weekly-forecast');
+const weatherChangesContainer = document.getElementById('weather-changes');
+
+// Function to generate a random weather condition for the current day
+function getRandomCondition() {
+  const conditions = ['Sunny', 'Cloudy', 'Rainy'];
+  const randomIndex = Math.floor(Math.random() * conditions.length);
+  return conditions[randomIndex];
+}
+
+// Function to generate a random temperature based on the weather condition for the current day
+function getRandomTemperature(condition) {
+  let minTemp, maxTemp;
+
+  switch (condition) {
+    case 'Sunny':
+      minTemp = 20;
+      maxTemp = 30;
+      break;
+    case 'Cloudy':
+      minTemp = 15;
+      maxTemp = 25;
+      break;
+    case 'Rainy':
+      minTemp = 10;
+      maxTemp = 20;
+      break;
+    default:
+      minTemp = 0;
+      maxTemp = 40;
+  }
+
+  return Math.floor(Math.random() * (maxTemp - minTemp + 1)) + minTemp;
+}
+
+// Function to generate a random weather forecast for the current day
+function generateCurrentDayForecast() {
+  let intervalCount = 0;
+  let condition = getRandomCondition();
+  let temperature = getRandomTemperature(condition);
+
+  currentDayForecastContainer.innerHTML = `<p>Temperature: ${temperature}°C</p><p>Condition: ${condition}</p>`;
+
+  const interval = setInterval(() => {
+    intervalCount++;
+
+    if (intervalCount % 2 === 0) {
+      condition = getRandomCondition();
+      temperature = getRandomTemperature(condition);
+
+      currentDayForecastContainer.innerHTML = `<p>Temperature: ${temperature}°C</p><p>Condition: ${condition}</p>`;
+    }
+  }, 2000);
+
+  // Stop the interval after 7 seconds (2 seconds * 3 iterations + initial data)
+  setTimeout(() => {
+    clearInterval(interval);
+  }, 100000);
+}
+
+// Function to generate a random weather condition emoji based on the condition
+function getWeatherEmoji(condition) {
+  switch (condition) {
+    case 'Sunny':
+      return '☀️';
+    case 'Cloudy':
+      return '☁️';
+    case 'Rainy':
+      return '🌧️';
+    default:
+      return '';
+  }
+}
+
+// Function to generate a random weather forecast for past and future 7 days
+function generateWeeklyForecast() {
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  let weeklyForecastHTML = '';
+
+  for (let i = 0; i <= 7; i++) {
+    const date = new Date();
+    date.setDate(date.getDate() + i);
+
+    const day = days[date.getDay()];
+    const condition = getRandomCondition();
+    const emoji = getWeatherEmoji(condition);
+
+    weeklyForecastHTML += `<p>${day} - ${condition} ${emoji}</p>`;
+  }
+
+  weeklyForecastContainer.innerHTML = weeklyForecastHTML;
+}
+
+// Function to check for major weather changes (e.g., change in condition) in the next 7 days
+function checkForMajorChanges() {
+  const conditions = ['Sunny', 'Cloudy', 'Rainy'];
+  const emoji = getWeatherEmoji(conditions[Math.floor(Math.random() * conditions.length)]);
+
+  const changeIndex = Math.floor(Math.random() * 7); // Index of the day with a major change
+
+  let weatherChangesHTML = '';
+
+  for (let i = 0; i <= 7; i++) {
+    const date = new Date();
+    date.setDate(date.getDate() + i);
+
+    const day = date.toLocaleDateString('en-US', { weekday: 'long' });
+
+    if (i === changeIndex) {
+      weatherChangesHTML += `<p>${day} - Major Change ${emoji} <span class="emoji">🚨</span></p>`;
+    } 
+    // else {
+    //   const condition = getRandomCondition();
+    //   const emoji = getWeatherEmoji(condition);
+
+    //   weatherChangesHTML += `<p>${day} - ${condition} ${emoji}</p>`;
+    // }
+  }
+
+  weatherChangesContainer.innerHTML = weatherChangesHTML;
+}
+
+// Generate the current day forecast
+generateCurrentDayForecast();
+
+// Generate the weekly forecast
+generateWeeklyForecast();
+
+// Check for major weather changes
+checkForMajorChanges();
+
+  </script>
+</body>
+</html>

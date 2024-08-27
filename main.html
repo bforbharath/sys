@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather Updates</title>
+
+  <style>
+    /* CSS styling for background gradient */
+body {
+  background: linear-gradient(to bottom, darkblue, skyblue, white);
+  margin: 0;
+  padding: 0;
+}
+
+/* CSS styling for navigation bar */
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  background-color: #f1f1f1;
+  overflow: hidden;
+}
+
+ul.navbar li {
+  float: left;
+}
+
+ul.navbar li a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+}
+
+ul.navbar li a:hover {
+  background-color: #ddd;
+}
+
+ul.navbar li select {
+  padding: 8px;
+}
+
+/* CSS styling for alert section */
+#alertContainer {
+  position: relative;
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+/* CSS styling for weather update section */
+#weatherContainer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+/* CSS styling for news section */
+#newsContainer {
+  padding: 20px;
+  background-color: #f9f9f9;
+  width: 300px;
+}
+
+#newsContainer img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Background gradient -->
+  <div style="background: linear-gradient(to bottom, darkblue, skyblue, white); height: 100vh;">
+    <!-- Navigation bar -->
+    <ul class="navbar">
+      <li>
+        <a href="#">Home</a>
+      </li>
+      <li>
+        <a href="#">Contact Us</a>
+      </li>
+      <li>
+        <a href="#">Login</a>
+      </li>
+      <li>
+        <a href="#">Map</a>
+      </li>
+      <li>
+        <a href="#">API</a>
+      </li>
+      <li>
+        <a href="#">Love Dove</a>
+      </li>
+      <li>
+        <select>
+          <option value="" disabled selected>Select Location</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Bangalore">Bangalore</option>
+          <!-- Add more cities as needed -->
+        </select>
+      </li>
+    </ul>
+
+    <!-- Alert section -->
+    <div style="text-align: center;">
+      <h2>Alert</h2>
+      <div id="alertContainer"></div>
+    </div>
+
+    <!-- Weather update section -->
+    <div style="text-align: center;">
+      <h2>Weather Updates</h2>
+      <div id="weatherContainer"></div>
+    </div>
+
+    <!-- News section -->
+    <div style="float: right; padding: 20px;">
+      <h2>News Section</h2>
+      <div id="newsContainer">
+        <p>Sample News 1</p>
+        <p>Sample News 2</p>
+        <p>Sample News 3</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript code to generate random alerts -->
+  <script>
+    const alertContainer = document.getElementById("alertContainer");
+
+    function generateRandomAlert() {
+      const alerts = ["It is raining", "Cyclone alert", "Random alert"];
+      const randomIndex = Math.floor(Math.random() * alerts.length);
+      return alerts[randomIndex];
+    }
+
+    function moveAlert() {
+      let position = 0;
+      const alertText = document.createElement("span");
+      alertText.style.position = "absolute";
+      alertText.style.left = "0";
+      alertText.style.top = "50%";
+      alertText.style.transform = "translateY(-50%)";
+      alertText.textContent = generateRandomAlert();
+      alertContainer.appendChild(alertText);
+
+      const animation = setInterval(frame, 10);
+
+      function frame() {
+        if (position >= window.innerWidth) {
+          clearInterval(animation);
+          alertContainer.removeChild(alertText);
+          moveAlert();
+        } else {
+          position++;
+          alertText.style.left = position + "px";
+        }
+      }
+    }
+
+    moveAlert();
+  </script>
+</body>
+</html>

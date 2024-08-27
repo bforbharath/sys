@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather Forecast</title>
+  <style>
+    @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom,rgb(0, 81, 128), white);
+      background-color: grey;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .location {
+      font-size: 80px;
+      margin-bottom: 20px;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .weather-forecast {
+      font-size: 40px;
+      margin-bottom: 30px;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: #ffffff;
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .cta-button:hover {
+      background-color: #45a049;
+    }
+    
+    .message-container {
+      margin-top: 50px;
+      position: relative;
+    }
+    
+    .message {
+      font-size: 24px;
+      color:white;
+      white-space: nowrap;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
+      animation: marquee 10s linear infinite;
+      font-family: 'Montserrat', sans-serif;
+
+
+      
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+      
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .iframe-container {
+  display: flex;
+  justify-content: center;
+}
+.iframe-container {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  float: left;
+  width: 50%;
+ margin-right: 20px;
+}
+#s{
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  float: right;
+  width: 50%;
+  margin-left: 20px;
+  
+}
+.messages{
+      animation: blink 1s infinite;
+  color: red;
+    }
+    @keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+    
+.alert{
+  color: red;
+}
+
+  </style>
+</head>
+<body>
+    
+  <div class="container">
+    <div class="messages">
+    <div class="message">
+        <span class="alert">Alert </span>
+        
+        <span style="color: red;">&#x26A0;</span>
+        <span>Cyclone will occur in the next 7 days</span>
+    </div>
+  </div>
+   
+    <div class="location">Your Location is Chennai </div>
+    <div class="weather-forecast">Ongoing Weather Forecast</div>
+    <!-- <a href="https://www.windy.com/?12.963,77.586,5" class="cta-button">Go from here</a> -->
+    <div class="message-container">
+      
+    </div>
+  </div>
+  <div>
+    <div class="iframe-container">
+        <iframe width="650" height="450" src="https://embed.windy.com/embed2.html?lat=12.942&lon=79.505&detailLat=13.071&detailLon=80.187&width=650&height=450&zoom=7&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1" frameborder="0"></iframe>        </div>
+        </div>
+        <div class="s">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497511.2310675645!2d79.8793358547298!3d13.047985942265075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1687578153683!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+</body>
+</html>

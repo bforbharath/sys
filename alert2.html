@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather Forecast</title>
+  <style>
+    @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+
+    body {
+      font-family:  Courier;
+      background: linear-gradient(to bottom,rgb(0, 81, 128), white);
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .location {
+      font-size: 80px;
+      margin-bottom: 20px;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .weather-forecast {
+      font-size: 40px;
+      margin-bottom: 30px;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: #ffffff;
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    .cta-button:hover {
+      background-color: #45a049;
+    }
+    
+    .message-container {
+      margin-top: 50px;
+      position: relative;
+    }
+    
+    .message {
+      font-size: 24px;
+      color:white;
+      white-space: nowrap;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      right: 0;
+      animation: marquee 10s linear infinite;
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+      
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .iframe-container {
+  display: flex;
+  justify-content: center;
+}
+.iframe-container {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  float: left;
+  width: 50%;
+}
+#s{
+    display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  float: right;
+  width: 50%;
+}
+.messages{
+      animation: blink 1s infinite;
+  
+    }
+    @keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+    
+.alert{
+  color: green
+}
+
+  </style>
+</head>
+<body>
+    
+  <div class="container">
+    <div class="message">
+        <div class="messages">
+        <span class="alert">No Alert </span>
+        
+        <span style="color: green;">&#x26A0;</span>
+        <span>Your City Is In Safe Condition</span>
+    </div>
+</div>
+    <div class="location">Your Location is Banglore</div>
+    <div class="weather-forecast">Ongoing Weather Forecast</div>
+    <!-- <a href="https://www.windy.com/?12.963,77.586,5" class="cta-button">Go from here</a> -->
+    <div class="message-container">
+      
+    </div>
+  </div>
+  <div>
+    <div class="iframe-container">
+        <iframe width="650" height="450" src="https://embed.windy.com/embed2.html?lat=11.879&lon=79.819&detailLat=11.879&detailLon=79.819&width=650&height=450&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1" frameborder="0"></iframe></body>
+    </div>
+        <div class="s">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497698.77491967316!2d77.30126357557232!3d12.954459536040845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1687577510596!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+        </div>
+</html>

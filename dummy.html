@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Portal</title>
+    <style>
+        /* CSS styles */
+        /* ... */
+    </style>
+</head>
+<body>
+    <div class="container animated">
+        <div class="chat-box" id="chatBox">
+            <p><strong>British East India Company:</strong> Alert! There are big changes in wind flow which can lead to a cyclone.</p>
+        </div>
+        <div class="location">
+            <span>Admin:</span>
+            <input type="text" id="user-chat" class="chat-input" placeholder="Type your message">
+            <button class="chat-button" onclick="sendMessage()">Send</button>
+        </div>
+        <div class="divider"></div>
+        
+        <div class="location">
+            <span>Chennai:</span>
+            <input type="text" id="chennai-places" class="search-input" placeholder="Enter Chennai places">
+            <button class="alert-button" onclick="sendAlert('chennai')">Send Alert</button>
+        </div>
+        
+        <div class="location">
+            <span>Bangalore:</span>
+            <input type="text" id="bangalore-places" class="search-input" placeholder="Enter Bangalore places">
+            <button class="alert-button" onclick="sendAlert('bangalore')">Send Alert</button>
+        </div>
+    </div>
+    <script>
+        function showNotification(title, message) {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        const notification = new Notification(title, { body: message });
+                    }
+                });
+            }
+        }
+
+        function sendAlert(location) {
+            var chatBox = document.getElementById('chatBox');
+            var placesInput = document.getElementById(location + '-places');
+            var places = placesInput.value;
+            
+            // Display the alert message in the chat box
+            chatBox.innerHTML += '<p><strong>You:</strong> Alert sent for ' + location + ' places: ' + places + '</p>';
+            
+            // Show a pop-up notification
+            showNotification('Alert', 'Alert sent for ' + location + ' places: ' + places);
+            
+            // Clear the input field
+            placesInput.value = '';
+        }
+
+        function sendMessage() {
+            var chatBox = document.getElementById('chatBox');
+            var userChatInput = document.getElementById('user-chat');
+            var message = userChatInput.value;
+            
+            // Display the user message in the chat box
+            chatBox.innerHTML += '<p><strong>You:</strong> ' + message + '</p>';
+            
+            // Show a pop-up notification
+            showNotification('New Message', message);
+            
+            // Clear the input field
+            userChatInput.value = '';
+        }
+    </script>
+</body>
+</html>

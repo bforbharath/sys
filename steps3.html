@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Website Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .main-heading {
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    
+    .step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      width: 50%;
+      box-sizing: border-box;
+      padding-right: 20px;
+      width: 100%;
+    }
+    
+    .step-number {
+      flex: 0 0 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgb(87, 164, 242);
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .step-content {
+      flex: 1;
+      margin-left: 20px;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .step-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .step-description {
+      font-size: 16px;
+      color: #666;
+    }
+    
+    .user-input-section {
+      width: 50%;
+      margin-top: 50px;
+      box-sizing: border-box;
+      padding-left: 20px;
+    }
+    
+    .input-field {
+      display: block;
+      margin-bottom: 20px;
+    }
+    
+    .input-field label {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .input-field input,
+    .input-field textarea {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .image-container {
+      width: 100%;
+      text-align: right;
+      margin-top: 50px;
+    }
+    
+    .image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+    
+    .submit-button {
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+    }
+    
+    .submit-button input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .submit-button input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-in-out;
+    }
+    
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    .animate-slideInRight {
+      animation: slideInRight 1s ease-in-out;
+    }
+    
+    @media (max-width: 768px) {
+      .step,
+      .user-input-section {
+        width: 100%;
+      }
+      
+      .step {
+        padding-right: 0;
+      }
+      
+      .user-input-section {
+        padding-left: 0;
+        margin-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="main-heading animate-fadeIn">Steps to Save Your Animals.</h1>
+  
+    <div class="step animate-fadeIn">
+      <div class="step-number">1</div>
+      <div class="step-content animate-slideInRight">
+        <div class="step-title">Step 1: Register</div>
+        <div class="step-description">Register Yourself on the Website.</div>
+      </div>
+    </div>
+    
+    <div class="step animate-fadeIn">
+      <div class="step-number">2</div>
+      <div class="step-content animate-slideInRight">
+        <div class="step-title">Step 2: Upload</div>
+        <div class="step-description">Upload Information About the Animal That Should be Saved It can be your pet or street animal.</div>
+      </div>
+    </div>
+    
+    <div class="step animate-fadeIn">
+      <div class="step-number">3</div>
+      <div class="step-content animate-slideInRight">
+        <div class="step-title">Step 3: Process</div>
+        <div class="step-description">We process your pets and Help you to guide How to Protect and Transport them.</div>
+      </div>
+    </div>
+    
+    <div class="step animate-fadeIn">
+      <div class="step-number">4</div>
+      <div class="step-content animate-slideInRight">
+        <div class="step-title">Step 4: Saved</div>
+        <div class="step-description">Now Our Team will Help you Transport Your pets or street animals to an Safer Place..</div>
+      </div>
+    </div>
+    
+    <div class="image-container animate-fadeIn">
+      <img class="image" src="pet3.jpg" alt="Image">
+    </div>
+    
+    <div class="user-input-section animate-fadeIn">
+      <h2>User Input</h2>
+      <div class="input-field">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name">
+      </div>
+      <div class="input-field">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+      </div>
+      <div class="input-field">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number">
+      </div>
+      <div class="input-field">
+        <label for="message">Message:</label>
+        <textarea id="message" placeholder="Enter your message"></textarea>
+      </div>
+      
+      <div class="submit-button animate-fadeIn">
+        <input type="submit" value="Submit">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

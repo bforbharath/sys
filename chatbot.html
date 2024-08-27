@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chatbot Example</title>
+  <style>
+    /* CSS styles for the chat window */
+    .chatbot-window {
+  width: 300px;
+  height: 400px;
+  background-color: #f2f2f2;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.chatbot-messages {
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.user-message {
+  background-color: #d1d1d1;
+}
+
+.bot-message {
+  background-color: #a8c0ff;
+}
+
+.chatbot-input {
+  padding: 10px;
+}
+
+#other-chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+#other-chat-button:hover {
+  cursor: pointer;
+}
+
+  </style>
+</head>
+
+<body>
+  <div id="chatbot-window" class="chatbot-window">
+    <div id="chatbot-messages" class="chatbot-messages"></div>
+    <div class="chatbot-input">
+      <input type="text" id="user-input" placeholder="Type your message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  <button id="other-chat-button" onclick="toggleChat()">Open Chat</button>
+  <script>
+
+
+
+
+
+
+
+
+
+
+    // Toggle chatbot window visibility
+    function toggleChat() {
+      var chatbotWindow = document.getElementById("chatbot-window");
+      var otherChatButton = document.getElementById("other-chat-button"); // Add the ID of the other chat button
+    
+      if (chatbotWindow.style.display === "none") {
+        chatbotWindow.style.display = "block";
+        otherChatButton.style.display = "none"; // Hide the other chat button
+      } else {
+        chatbotWindow.style.display = "none";
+        otherChatButton.style.display = "block"; // Show the other chat button
+      }
+    }
+    
+    // Send user message and receive bot response
+    function sendMessage() {
+      var userInput = document.getElementById("user-input");
+      var userMessage = userInput.value;
+      userInput.value = "";
+    
+      // Display user message in chat window
+      displayMessage(userMessage, "user");
+    
+      // Process user message and generate bot response
+      var botResponse = generateBotResponse(userMessage);
+    
+      // Display bot response in chat window
+      displayMessage(botResponse, "bot");
+    }
+    
+    // Display message in the chat window
+    function displayMessage(message, sender) {
+      var chatbotMessages = document.getElementById("chatbot-messages");
+      var messageElement = document.createElement("div");
+      messageElement.classList.add("message");
+      messageElement.classList.add(sender);
+      messageElement.classList.add(sender + "-message");
+      messageElement.innerHTML = message;
+      chatbotMessages.appendChild(messageElement);
+    
+      // Scroll to the latest message
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+    
+    // Generate bot response based on user message
+    function generateBotResponse(userMessage) {
+      // Example FAQs and their responses
+      var faqs = {
+    
+        "hi":"Hello we are founders of TRADE_V we are from team error.. how can we help you",
+        "":"",
+        "":"",
+        "":"",
+        "":"",
+        "":"",
+        "":"",
+        "":"",
+        "":"",
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        "What is a stock?": "A stock represents ownership in a company...",
+        "How do I buy stocks?": "You can buy stocks through a brokerage account...",
+        // Add more FAQs and responses here
+      };
+    
+      var response = faqs[userMessage];
+    
+      if (response) {
+        return response;
+      } else {
+        return "Our experts will get in touch with you soon to address your question in more detail.";
+      }
+    }
+     </script>
+
+
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
+</body>
+</html>
